@@ -8,8 +8,8 @@ require('dotenv').config()
 const port = process.env.PORT || 3000
 
 app.get('/', function(req, res){
-  res.send('Hello world.');
-});
+  res.send('Hello world.')
+})
 
 // insert your twitter app info here
 const T = new Twit({

@@ -2,12 +2,18 @@
   "name": "emily-bot",
   "version": 2,
   "alias": ["emily-bot", "emily-tweet-bot"],
-  "builds": [{ "src": "main.js", "use": "@now/node-server" }],
+  "builds": [{ "src": "main.js", "use": "@now/node" }],
   "env": {
     "API_KEY": "@api_key",
     "API_SECRET_KEY": "@api_secret_key",
     "ACCESS_TOKEN": "@access_token",
     "ACCESS_TOKEN_SECRET": "@access_token_secret",
     "PORT": "@port"
-  }
+  },
+  "routes": [
+    {
+      "src": "/",
+      "dest": "main.js"
+    }
+  ]
 }
