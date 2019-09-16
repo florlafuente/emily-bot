@@ -19,24 +19,36 @@ const T = new Twit({
   access_token_secret:  process.env.ACCESS_TOKEN_SECRET
 })
 
-const apiUrl = "http://poetrydb.org/author/Emily Dickinson"
-
 
 // Bring an array of quotes from the API
 const getQuote = async () => {
   try {
-    const res = await axios.get(apiUrl)
+    const res = await axios.get("http://poetrydb.org/author/Emily Dickinson")
     const poems = res.data
 
     //get a random poem from the array
     const randomPoem = poems[Math.floor(Math.random()*poems.length)].lines
+    console.log(randomPoem)
 
+    const firstCut = randomPoem.indexOf('') 
+    const tweetContent = firstCut !== -1 ? randomPoem.slice(0, firstCut) : randomPoem
 
+    const tweet = await T.post('statuses/update', {
+      status: tweetContent
+    })
+    console.log(tweet.resp.toJSON().statusCode)
   } catch (err) {
     console.error(err)
   }
 }
 
-getQuote()
+setInterval(async () => {
+  try {
+    getQuote()
+  }
+ catch (e) {
+    console.log(e)
+  }
+}, 5)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
