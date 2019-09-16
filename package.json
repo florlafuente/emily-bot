@@ -1,0 +1,33 @@
+{
+  "name": "emily-bot",
+  "version": "0.0.1",
+  "description": "Twitter Bot that tweets Emily Dickinson Poems",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florlafuente/emily-bot.git"
+  },
+  "keywords": [
+    "Emily",
+    "Dickinson",
+    "Poetry",
+    "Twitter",
+    "Bot",
+    "Node.JS"
+  ],
+  "author": "Flor Lafuente",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/florlafuente/emily-bot/issues"
+  },
+  "homepage": "https://github.com/florlafuente/emily-bot#readme",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "twit": "^2.2.11"
+  }
+}
