@@ -11,6 +11,17 @@ app.get('/', function(req, res){
   res.send('Hello world.')
 })
 
+app.get('/tweet', (req, res) => {
+  try {
+    getQuote()
+    res.send('Tweet sent')
+  }
+ catch (e) {
+    console.log(e)
+    res.send('Some error happened :(')
+  }
+})
+
 // insert your twitter app info here
 const T = new Twit({
   consumer_key:         process.env.API_KEY, 
@@ -41,14 +52,5 @@ const getQuote = async () => {
     console.error(err)
   }
 }
-
-setInterval(async () => {
-  try {
-    getQuote()
-  }
- catch (e) {
-    console.log(e)
-  }
-}, 3600)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
