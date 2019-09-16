@@ -11,10 +11,10 @@ app.get('/', function(req, res){
   res.send('Hello world.')
 })
 
-app.get('/tweet', (req, res) => {
+app.get('/tweet', async (req, res) => {
   try {
-    getQuote()
-    res.send('Tweet sent')
+    const makeTweet =  await getQuote()
+    res.send(makeTweet)
   }
  catch (e) {
     console.log(e)
@@ -48,6 +48,7 @@ const getQuote = async () => {
       status: tweetContent
     })
     console.log(tweet.resp.toJSON().statusCode)
+    return 'Tweet sent'
   } catch (err) {
     console.error(err)
   }
