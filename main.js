@@ -49,6 +49,6 @@ setInterval(async () => {
  catch (e) {
     console.log(e)
   }
-}, 5)
+}, 3600)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
